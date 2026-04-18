@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Rubik', sans-serif;
+  text-align: center;
+  padding: 20px;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  height: 100vh;
+}
+
+h2{padding: 20px;}
+p { padding: 20px; font-weight: 700; font-size: clamp(14px, 1.3vw, 20px); }
+img { padding-bottom: 20px; }
+
+.grid-container {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  max-width: 1300px;
+  min-height: 90vh;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas:
+    "einstein bojack  pony    cartman"
+    "einstein yolandi yolandi cartman"
+    "legs     yolandi yolandi grimes"
+    "wests    wests   apple   grimes";
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: var(--bg, #ffffff);
+}
+
+.card.only-photo {
+  justify-content: center;
+  padding: 0;
+  padding-top: 20px;
+}
+
+.einstein { grid-area: einstein; }
+.legs     { grid-area: legs; }
+.bojack   { grid-area: bojack; }
+.pony     { grid-area: pony; }
+.yolandi  { grid-area: yolandi; }
+.wests    { grid-area: wests; }
+.apple    { grid-area: apple; }
+.cartman  { grid-area: cartman; }
+.grimes   { grid-area: grimes; }
+
+@media (max-width: 850px) {
+  body {height: 150vw;}
+  
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas:
+      "einstein   bojack    pony"
+      "einstein   yolandi   yolandi"
+      "legs       yolandi   yolandi"
+      "wests      wests     apple"
+      "cartman    cartman   grimes"
+      "cartman    cartman   grimes";
+  }
+}
+
+@media (max-width: 500px) {
+  body {height: auto;}
+  p {font-size: 5vw}
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "einstein"
+      "bojack"
+      "pony"
+      "legs"
+      "yolandi"
+      "wests"
+      "apple"
+      "cartman"
+      "grimes";
+  }
+  .card { height: fit-content; }
+}
